@@ -20,7 +20,7 @@ function MyApp() {
   function updateList(person) {
     makePostCall(person).then((result) => {
       if (result && result.status === 201) {
-        person.id = result.data.id;
+        person._id = result.data._id;
         setCharacters([...characters, person]);
       }
     });
@@ -49,7 +49,7 @@ function MyApp() {
   async function makeDeleteCall(person) {
     try {
       const response = await axios.delete(
-        "http://localhost:5000/users/" + person.id
+        "http://localhost:5000/users/" + person._id
       );
       return response;
     } catch (error) {
